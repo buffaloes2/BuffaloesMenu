@@ -42,14 +42,17 @@ function toggleCategorySidebar() {
   sidebar.classList.toggle('open');
 }
 
+// ─────────────────────────────────────────────
+// BAR: CATEGORY FILTER (Fixes the UI bug!)
+// ─────────────────────────────────────────────
 function filterCat(btn, cat) {
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // force clear the search input
+  // ✅ FORCE CLEAR SEARCH BOX (This fixes the UI bug)
   document.getElementById('bar-search').value = '';
 
-  // reset ALL items in ALL categories to visible first
+  // Reset ALL items and categories to visible first
   document.querySelectorAll('#menu-bar .menu-item').forEach(item => {
     item.style.display = '';
   });
@@ -57,7 +60,7 @@ function filterCat(btn, cat) {
     el.style.display = '';
   });
 
-  // now apply the category filter
+  // Now apply the category filter
   if (cat !== 'all') {
     document.querySelectorAll('#menu-bar .category').forEach(el => {
       el.style.display = (el.dataset.cat === cat) ? '' : 'none';
@@ -67,7 +70,9 @@ function filterCat(btn, cat) {
   showNoResults();
 }
 
-
+// ─────────────────────────────────────────────
+// BAR: SEARCH FILTER
+// ─────────────────────────────────────────────
 function filterBar() {
   const query = document.getElementById('bar-search').value.toLowerCase().trim();
 
@@ -84,7 +89,6 @@ function filterBar() {
 
     let catVisible = false;
     cat.querySelectorAll('.menu-item').forEach(item => {
-      // only match against item name and description, NOT category title
       const itemName = item.querySelector('.item-name');
       const itemDesc = item.querySelector('.item-desc');
       const nameText = itemName ? itemName.innerText.toLowerCase() : '';
@@ -118,17 +122,20 @@ function showNoResults() {
     if (existing) existing.remove();
   }
 }
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
 
+// ==========================================
+// PARALLAX SCROLL (RESTORED!)
+// ==========================================
+window.addEventListener('scroll', () => {
   document.querySelectorAll('.split-layout').forEach(layout => {
-    const layoutTop = layout.offsetTop;
-    const offset = Math.max(0, scrollY - layoutTop);
+    const rect = layout.getBoundingClientRect();
+    // Calculate how far past the top we have scrolled
+    const offset = Math.max(0, -rect.top);
     const imageColumn = layout.querySelector('.split-left');
 
     if (imageColumn) {
+      // Move the images at 40% of the speed of the menu
       imageColumn.style.transform = `translateY(${offset * 0.4}px)`;
     }
   });
 }, { passive: true });
-
