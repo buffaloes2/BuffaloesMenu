@@ -106,4 +106,17 @@ function showNoResults() {
     if (existing) existing.remove();
   }
 }
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  document.querySelectorAll('.split-layout').forEach(layout => {
+    const layoutTop = layout.offsetTop;
+    const offset = Math.max(0, scrollY - layoutTop);
+    const imageColumn = layout.querySelector('.split-left');
+
+    if (imageColumn) {
+      imageColumn.style.transform = `translateY(${offset * 0.4}px)`;
+    }
+  });
+}, { passive: true });
 
