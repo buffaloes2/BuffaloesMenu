@@ -207,7 +207,7 @@ body {
   padding-top: 135px;
 }
 
-/* sticky header — always visible while scrolling */
+/* header — always visible while scrolling */
 .section-header {
   position: fixed;
   top: 0;
@@ -245,7 +245,7 @@ body {
   color: var(--white);
 }
 
-/* ========== SEARCH BAR — sticky always visible ========== */
+/* ========== SEARCH BAR — always visible ========== */
 #bar-controls {
   position: fixed;
   top: 65px;
@@ -403,7 +403,6 @@ body {
 }
 
 /* ========== SPLIT LAYOUT ========== */
-/* NO overflow:hidden here — that breaks sticky */
 .split-layout {
   display: flex;
   flex-direction: row;
@@ -415,7 +414,7 @@ body {
   position: relative;
 }
 
-/* LEFT — sticky parallax, smooth on all devices */
+/* LEFT — parallax via JS */
 .split-left {
   flex: 1;
   min-width: 0;
@@ -430,6 +429,7 @@ body {
   z-index: 0;
 }
 
+/* Image fade-in — starts hidden, JS adds .img-visible */
 .split-left img {
   width: 100%;
   height: auto;
@@ -437,6 +437,14 @@ body {
   border-radius: 16px;
   display: block;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.split-left img.img-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* RIGHT — scrolls normally */
@@ -578,7 +586,6 @@ body {
   }
   .split-left {
     gap: 100px;
-    top: 140px;
   }
 }
 
@@ -587,11 +594,11 @@ body {
   .section-header {
     padding: 10px 12px;
   }
-  
+
   #section-view {
     padding-top: 100px;
   }
-  
+
   .split-layout {
     flex-direction: row;
     gap: 6px;
