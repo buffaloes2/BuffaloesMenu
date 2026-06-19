@@ -46,24 +46,23 @@ function filterCat(btn, cat) {
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // clear search input completely
-  const searchInput = document.getElementById('bar-search');
-  searchInput.value = '';
+  // force clear the search input
+  document.getElementById('bar-search').value = '';
 
-  const categories = document.querySelectorAll('#menu-bar .category');
-  categories.forEach(el => {
-    // first show ALL items in every category
-    el.querySelectorAll('.menu-item').forEach(item => {
-      item.style.display = '';
-    });
-
-    // then show or hide the category itself
-    if (cat === 'all') {
-      el.style.display = '';
-    } else {
-      el.style.display = (el.dataset.cat === cat) ? '' : 'none';
-    }
+  // reset ALL items in ALL categories to visible first
+  document.querySelectorAll('#menu-bar .menu-item').forEach(item => {
+    item.style.display = '';
   });
+  document.querySelectorAll('#menu-bar .category').forEach(el => {
+    el.style.display = '';
+  });
+
+  // now apply the category filter
+  if (cat !== 'all') {
+    document.querySelectorAll('#menu-bar .category').forEach(el => {
+      el.style.display = (el.dataset.cat === cat) ? '' : 'none';
+    });
+  }
 
   showNoResults();
 }
