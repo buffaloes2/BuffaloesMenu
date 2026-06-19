@@ -253,9 +253,10 @@ body {
   align-items: stretch;
   position: relative;
   overflow: hidden;
+  perspective: 1px;
+  transform-style: preserve-3d;
 }
 
-/* The Left Column (1/3) - Controlled by JS */
 .split-left {
   flex: 1;
   display: flex;
@@ -263,11 +264,9 @@ body {
   gap: 140px;
   border-radius: 16px;
   background: #0D2E2A;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  overflow: hidden;
   min-width: 0;
+  transform: translateZ(-0.5px) scale(1.5);
+  transform-origin: top center;
 }
 
 .split-left img {
@@ -590,8 +589,6 @@ body {
     flex: 1;
     min-width: 0;
     gap: 80px;
-    transform: none !important;
-    will-change: auto;
   }
 
   .split-left img {
