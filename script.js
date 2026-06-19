@@ -46,10 +46,18 @@ function filterCat(btn, cat) {
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  document.getElementById('bar-search').value = '';
+  // clear search input completely
+  const searchInput = document.getElementById('bar-search');
+  searchInput.value = '';
 
   const categories = document.querySelectorAll('#menu-bar .category');
   categories.forEach(el => {
+    // first show ALL items in every category
+    el.querySelectorAll('.menu-item').forEach(item => {
+      item.style.display = '';
+    });
+
+    // then show or hide the category itself
     if (cat === 'all') {
       el.style.display = '';
     } else {
@@ -58,8 +66,8 @@ function filterCat(btn, cat) {
   });
 
   showNoResults();
-  document.getElementById('section-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
 
 function filterBar() {
   const query = document.getElementById('bar-search').value.toLowerCase().trim();
@@ -77,11 +85,16 @@ function filterBar() {
 
     let catVisible = false;
     cat.querySelectorAll('.menu-item').forEach(item => {
-      const text = item.innerText.toLowerCase();
-      const match = text.includes(query);
+      // only match against item name and description, NOT category title
+      const itemName = item.querySelector('.item-name');
+      const itemDesc = item.querySelector('.item-desc');
+      const nameText = itemName ? itemName.innerText.toLowerCase() : '';
+      const descText = itemDesc ? itemDesc.innerText.toLowerCase() : '';
+      const match = nameText.includes(query) || descText.includes(query);
       item.style.display = match ? '' : 'none';
       if (match) catVisible = true;
     });
+
     cat.style.display = catVisible ? '' : 'none';
   });
 
