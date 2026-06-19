@@ -106,13 +106,12 @@ function showNoResults() {
     if (existing) existing.remove();
   }
 }
-
 window.addEventListener('scroll', () => {
-  const splitLayouts = document.querySelectorAll('.split-layout');
+  const scrollY = window.scrollY;
   
-  splitLayouts.forEach(layout => {
-    const rect = layout.getBoundingClientRect();
-    const offset = Math.max(0, -rect.top);
+  document.querySelectorAll('.split-layout').forEach(layout => {
+    const layoutTop = layout.offsetTop;
+    const offset = Math.max(0, scrollY - layoutTop);
     const imageColumn = layout.querySelector('.split-left');
     
     if (imageColumn) {
