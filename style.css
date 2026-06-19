@@ -204,12 +204,15 @@ body {
   display: none;
   min-height: 100vh;
   background: #0D2E2A;
+  padding-top: 135px;
 }
 
 /* sticky header — always visible while scrolling */
 .section-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 200;
   background: #0D2E2A;
   border-bottom: 1px solid rgba(212,168,83,0.2);
@@ -244,12 +247,14 @@ body {
 
 /* ========== SEARCH BAR — sticky always visible ========== */
 #bar-controls {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  right: 0;
+  z-index: 199;
   background: rgba(13,46,42,0.97);
   padding: 16px 24px 12px;
   border-bottom: 1px solid rgba(212,168,83,0.15);
-  position: sticky;
-  top: 65px;
-  z-index: 199;
   min-height: 70px;
 }
 
@@ -579,6 +584,14 @@ body {
 
 /* ========== MOBILE ========== */
 @media (max-width: 768px) {
+  .section-header {
+    padding: 10px 12px;
+  }
+  
+  #section-view {
+    padding-top: 100px;
+  }
+  
   .split-layout {
     flex-direction: row;
     gap: 6px;
@@ -677,7 +690,7 @@ body {
 
   /* Search bar */
   #bar-controls {
-    top: 57px;
+    top: 50px;
     padding: 6px 6px 4px;
     min-height: 50px;
   }
