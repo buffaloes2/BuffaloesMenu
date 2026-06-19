@@ -590,6 +590,8 @@ body {
     flex: 1;
     min-width: 0;
     gap: 80px;
+    transform: none !important;
+    will-change: auto;
   }
 
   .split-left img {
