@@ -77,20 +77,28 @@ body {
 .logo-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 15vw, 80px);
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   color: var(--white);
   line-height: 1;
+  text-align: center;
 }
 
 .logo-sub {
   font-family: 'Barlow', sans-serif;
   font-weight: 300;
   font-style: italic;
-  font-size: 14px;
+  font-size: clamp(11px,3vw, 14px);
   letter-spacing: 4px;
   color: var(--gold);
   text-transform: uppercase;
   margin-top: 6px;
+  text-align: center;
+}
+
+.logo-title-sub{
+  font-size: clamp(28px, 8vw, 60px);
+  color: var(--gold);
+  letter-spacing: 6px;
 }
 
 .divider {
