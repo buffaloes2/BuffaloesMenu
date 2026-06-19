@@ -74,6 +74,7 @@ body {
 }
 .logo-image:hover { transform: scale(1.02); }
 
+/* --- CORRECTED TITLE STYLES --- */
 .logo-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 15vw, 80px);
@@ -83,22 +84,24 @@ body {
   text-align: center;
 }
 
+.logo-title-sub {
+  font-size: clamp(18px, 4.5vw, 26px); /* Made smaller */
+  color: var(--white);                 /* Changed to white */
+  letter-spacing: 6px;
+  margin-top: -8px;
+  display: block;
+}
+
 .logo-sub {
   font-family: 'Barlow', sans-serif;
   font-weight: 300;
   font-style: italic;
-  font-size: clamp(11px,3vw, 14px);
+  font-size: clamp(11px, 3vw, 14px);
   letter-spacing: 4px;
-  color: var(--gold);
+  color: var(--white);                 /* Changed to white */
   text-transform: uppercase;
   margin-top: 6px;
   text-align: center;
-}
-
-.logo-title-sub{
-  font-size: clamp(20px, 6vw, 20px);
-  color: var(--gold);
-  letter-spacing: 6px;
 }
 
 .divider {
@@ -215,7 +218,6 @@ body {
   padding-top: 135px;
 }
 
-/* header — always visible while scrolling */
 .section-header {
   position: fixed;
   top: 0;
@@ -253,7 +255,7 @@ body {
   color: var(--gold);
 }
 
-/* ========== SEARCH BAR — always visible ========== */
+/* ========== SEARCH BAR ========== */
 #bar-controls {
   position: fixed;
   top: 65px;
@@ -422,7 +424,6 @@ body {
   position: relative;
 }
 
-/* LEFT — parallax via JS */
 .split-left {
   flex: 1;
   min-width: 0;
@@ -437,7 +438,6 @@ body {
   z-index: 0;
 }
 
-/* Image fade-in — starts hidden, JS adds .img-visible */
 .split-left img {
   width: 100%;
   height: auto;
@@ -455,7 +455,6 @@ body {
   transform: translateY(0);
 }
 
-/* RIGHT — scrolls normally */
 .split-right {
   flex: 2;
   width: 100%;
@@ -464,7 +463,6 @@ body {
   z-index: 1;
 }
 
-/* ========== CATEGORY BLOCK ========== */
 .category {
   margin-bottom: 48px;
   animation: fadeUp 0.5s ease both;
@@ -703,7 +701,6 @@ body {
     font-size: 10px;
   }
 
-  /* Search bar */
   #bar-controls {
     top: 50px;
     padding: 6px 6px 4px;
@@ -763,5 +760,14 @@ body {
 
   .logo-image {
     width: 80px;
+  }
+
+  /* Mobile logo adjustment */
+  .logo-title {
+    font-size: clamp(42px, 12vw, 52px);
+  }
+  .logo-title-sub {
+    font-size: clamp(16px, 4vw, 20px);
+    margin-top: -4px;
   }
 }
