@@ -67,6 +67,9 @@ function filterCat(btn, cat) {
     });
   }
 
+  // closes the category side bar
+  document.getElementById('category-sidebar').classList.remove('open');
+
   showNoResults();
 }
 
