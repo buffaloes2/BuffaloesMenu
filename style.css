@@ -96,8 +96,8 @@ body {
 }
 
 .logo-title-sub{
-  font-size: clamp(28px, 8vw, 60px);
-  color: var(--white);
+  font-size: clamp(20px, 6vw, 20px);
+  color: var(--gold);
   letter-spacing: 6px;
 }
 
