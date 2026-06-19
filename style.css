@@ -78,7 +78,7 @@ body {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 15vw, 80px);
   letter-spacing: 4px;
-  color: var(--white);
+  color: var(--gold);
   line-height: 1;
   text-align: center;
 }
