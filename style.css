@@ -97,7 +97,7 @@ body {
 
 .logo-title-sub{
   font-size: clamp(28px, 8vw, 60px);
-  color: var(--gold);
+  color: var(--white);
   letter-spacing: 6px;
 }
 
