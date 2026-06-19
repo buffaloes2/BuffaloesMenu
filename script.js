@@ -107,6 +107,8 @@ function showNoResults() {
   }
 }
 window.addEventListener('scroll', () => {
+  if (window.innerWidth <= 768) return; // skip on mobile
+
   const scrollY = window.scrollY;
   
   document.querySelectorAll('.split-layout').forEach(layout => {
