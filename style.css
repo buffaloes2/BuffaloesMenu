@@ -265,6 +265,7 @@ body {
   border-radius: 16px;
   background: #0D2E2A;
   min-width: 0;
+  z-index: 0;
   transform: translateZ(-0.5px) scale(1.5);
   transform-origin: top center;
 }
@@ -283,6 +284,8 @@ body {
   flex: 2;
   width: 100%;
   min-width: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* ========== CATEGORY BLOCK ========== */
