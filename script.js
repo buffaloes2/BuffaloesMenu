@@ -43,13 +43,13 @@ function toggleCategorySidebar() {
 }
 
 // ─────────────────────────────────────────────
-// BAR: CATEGORY FILTER (Fixes the UI bug!)
+// BAR: CATEGORY FILTER (Searches clear on click)
 // ─────────────────────────────────────────────
 function filterCat(btn, cat) {
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // ✅ FORCE CLEAR SEARCH BOX (This fixes the UI bug)
+  // Force clear the search input
   document.getElementById('bar-search').value = '';
 
   // Reset ALL items and categories to visible first
@@ -123,18 +123,82 @@ function showNoResults() {
   }
 }
 
+// ─────────────────────────────────────────────
+// MINI DROPDOWN HANDLING
+// ─────────────────────────────────────────────
+function populateDropdown() {
+  const dropdown = document.getElementById('mini-dropdown');
+  const categories = [
+    { cat: 'all', label: 'All', icon: '🍸' },
+    { cat: 'rum', label: 'Rum', icon: '🥃' },
+    { cat: 'vodka', label: 'Vodka', icon: '🍸' },
+    { cat: 'gin', label: 'Gin', icon: '🍹' },
+    { cat: 'tequila', label: 'Tequila', icon: '🥂' },
+    { cat: 'cognac', label: 'Cognac', icon: '🥃' },
+    { cat: 'whiskey', label: 'Whiskey', icon: '🥃' },
+    { cat: 'malt', label: 'Single Malt', icon: '🥃' },
+    { cat: 'liqueur', label: 'Liqueur', icon: '🍷' },
+    { cat: 'wine', label: 'Wine', icon: '🍷' },
+    { cat: 'champagne', label: 'Champagne', icon: '🍾' },
+    { cat: 'cocktails', label: 'Cocktails', icon: '🍹' },
+    { cat: 'shooters', label: 'Shooters', icon: '🥃' },
+    { cat: 'cold', label: 'Cold Drinks', icon: '🍺' },
+  ];
+
+  dropdown.innerHTML = categories.map(c => `
+    <div class="mini-dropdown-item" onclick="selectDropdownCategory('${c.cat}')">
+      <span class="cat-icon">${c.icon}</span>
+      <span class="cat-label">${c.label}</span>
+    </div>
+  `).join('');
+}
+
+// ─────────────────────────────────────────────
+// SELECT DROPDOWN CATEGORY (UPDATED TO CLOSE DROPDOWN)
+// ─────────────────────────────────────────────
+function selectDropdownCategory(cat) {
+  // Find the corresponding pill button and trigger filter
+  const pills = document.querySelectorAll('.cat-pill');
+  let targetBtn = null;
+  pills.forEach(btn => {
+    if (btn.textContent.trim().toLowerCase() === cat || 
+        (cat === 'all' && btn.textContent.trim() === 'ALL')) {
+      targetBtn = btn;
+    }
+  });
+  
+  if (targetBtn) {
+    filterCat(targetBtn, cat);
+  }
+  
+  // ✅ FIXED: Force the dropdown to disappear immediately
+  document.getElementById('mini-dropdown').classList.remove('show');
+  
+  // Clear the search bar text and remove focus from input
+  document.getElementById('bar-search').value = '';
+  document.getElementById('bar-search').blur();
+}
+
+function showDropdown() {
+  document.getElementById('mini-dropdown').classList.add('show');
+}
+
+function hideDropdown() {
+  setTimeout(() => {
+    document.getElementById('mini-dropdown').classList.remove('show');
+  }, 200);
+}
+
 // ==========================================
-// PARALLAX SCROLL (RESTORED!)
+// PARALLAX SCROLL
 // ==========================================
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.split-layout').forEach(layout => {
     const rect = layout.getBoundingClientRect();
-    // Calculate how far past the top we have scrolled
     const offset = Math.max(0, -rect.top);
     const imageColumn = layout.querySelector('.split-left');
 
     if (imageColumn) {
-      // Move the images at 40% of the speed of the menu
       imageColumn.style.transform = `translateY(${offset * 0.4}px)`;
     }
   });
