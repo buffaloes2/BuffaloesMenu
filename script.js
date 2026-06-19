@@ -43,7 +43,7 @@ function toggleCategorySidebar() {
 }
 
 // ─────────────────────────────────────────────
-// BAR: CATEGORY FILTER (Searches clear on click)
+// BAR: CATEGORY FILTER
 // ─────────────────────────────────────────────
 function filterCat(btn, cat) {
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
@@ -124,7 +124,7 @@ function showNoResults() {
 }
 
 // ─────────────────────────────────────────────
-// MINI DROPDOWN HANDLING
+// MINI DROPDOWN INSIDE SEARCH BAR
 // ─────────────────────────────────────────────
 function populateDropdown() {
   const dropdown = document.getElementById('mini-dropdown');
@@ -154,7 +154,7 @@ function populateDropdown() {
 }
 
 // ─────────────────────────────────────────────
-// SELECT DROPDOWN CATEGORY (UPDATED TO CLOSE DROPDOWN)
+// SELECT DROPDOWN CATEGORY (INSTANT CLOSE)
 // ─────────────────────────────────────────────
 function selectDropdownCategory(cat) {
   // Find the corresponding pill button and trigger filter
@@ -171,22 +171,30 @@ function selectDropdownCategory(cat) {
     filterCat(targetBtn, cat);
   }
   
-  // ✅ FIXED: Force the dropdown to disappear immediately
-  document.getElementById('mini-dropdown').classList.remove('show');
+  // ✅ FORCE CLOSE THE DROPDOWN INSTANTLY
+  const dropdown = document.getElementById('mini-dropdown');
+  dropdown.classList.remove('show');
   
-  // Clear the search bar text and remove focus from input
+  // Reset the input field
   document.getElementById('bar-search').value = '';
   document.getElementById('bar-search').blur();
 }
 
+// ─────────────────────────────────────────────
+// DROPDOWN SHOW / HIDE
+// ─────────────────────────────────────────────
 function showDropdown() {
-  document.getElementById('mini-dropdown').classList.add('show');
+  // Only show if we are inside the Bar menu
+  if (document.getElementById('bar-controls').style.display !== 'none') {
+    document.getElementById('mini-dropdown').classList.add('show');
+  }
 }
 
 function hideDropdown() {
+  // We use a small delay to let the user click the dropdown item
   setTimeout(() => {
     document.getElementById('mini-dropdown').classList.remove('show');
-  }, 200);
+  }, 300);
 }
 
 // ==========================================
