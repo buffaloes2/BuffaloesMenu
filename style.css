@@ -250,24 +250,24 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px 80px;
-  align-items: stretch;
+  align-items: flex-start;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* The Left Column (1/3) - Controlled by JS */
+/* LEFT COLUMN - parallax via sticky */
 .split-left {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 140px;
   border-radius: 16px;
   background: #0D2E2A;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  overflow: hidden;
-  min-width: 0;
+  position: sticky;
+  top: 130px;
+  align-self: flex-start;
+  z-index: 0;
 }
 
 .split-left img {
@@ -279,11 +279,13 @@ body {
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
-/* The Right Column (2/3) - Normal Speed */
+/* RIGHT COLUMN */
 .split-right {
   flex: 2;
   width: 100%;
   min-width: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* ========== CATEGORY BLOCK ========== */
@@ -350,12 +352,14 @@ body {
   min-width: 110px;
   flex-shrink: 0;
 }
+
 .price-row {
   display: flex;
   justify-content: flex-end;
   gap: 24px;
   font-size: 15px;
 }
+
 .price-row span {
   font-family: 'Bebas Neue', sans-serif;
   color: var(--gold);
@@ -569,6 +573,7 @@ body {
   }
   .split-left {
     gap: 100px;
+    top: 120px;
   }
 }
 
@@ -583,13 +588,16 @@ body {
     gap: 6px;
     padding: 10px 8px 40px;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .split-left {
     flex: 1;
     min-width: 0;
-    gap: 80px;
+    gap: 60px;
+    position: sticky;
+    top: 110px;
+    align-self: flex-start;
   }
 
   .split-left img {
