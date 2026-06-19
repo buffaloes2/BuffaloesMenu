@@ -74,33 +74,35 @@ body {
 }
 .logo-image:hover { transform: scale(1.02); }
 
-/* --- NEW LOGO TEXT STYLES --- */
+/* --- CORRECTED LOGO TEXT STYLES (MATCHES YOUR HTML) --- */
 .logo-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  line-height: 1.1;
-}
-
-.logo-main {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 15vw, 80px);
   letter-spacing: 4px;
-  color: var(--white);
-  font-weight: 400;
+  color: var(--white); /* Changed to white */
+  line-height: 1;
+  text-align: center;
 }
 
-.logo-subtitle {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(26px, 6vw, 38px);
-  letter-spacing: 4px;
-  color: var(--white);
+.logo-sub {
+  font-family: 'Barlow', sans-serif;
   font-weight: 300;
-  margin-top: -8px;
+  font-style: italic;
+  font-size: clamp(11px, 3vw, 14px); /* Kept small */
+  letter-spacing: 4px;
+  color: var(--white); /* Changed to white */
+  text-transform: uppercase;
+  margin-top: 6px;
+  text-align: center;
 }
 
-/* Address text */
+.logo-title-sub {
+  font-size: clamp(20px, 6vw, 20px);
+  color: var(--white); /* Changed to white */
+  letter-spacing: 6px;
+}
+
+/* Address text - stays Gold */
 .logo-address {
   font-family: 'Barlow', sans-serif;
   font-weight: 300;
@@ -108,9 +110,8 @@ body {
   letter-spacing: 4px;
   color: var(--gold);
   text-transform: uppercase;
-  margin-top: 12px;
+  margin-top: 6px;
   text-align: center;
-  opacity: 0.8;
 }
 
 .divider {
@@ -776,13 +777,12 @@ body {
   .logo-image {
     width: 80px;
   }
-  
-  /* Mobile logo adjustments */
-  .logo-main {
+
+  /* Mobile logo adjustments - Kept your existing sizes */
+  .logo-title {
     font-size: clamp(42px, 12vw, 52px);
   }
-  .logo-subtitle {
-    font-size: clamp(22px, 5vw, 26px);
-    margin-top: -4px;
+  .logo-title-sub {
+    font-size: clamp(20px, 6vw, 20px);
   }
 }
