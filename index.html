@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Buffaloes — Restaurant & Bar Menu</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- LANDING PAGE -->
+<div id="landing">
+  <div class="logo-wrap">
+    <img class="logo-image" src="Images/buffaloes-logo.jpeg" alt="Buffaloes Logo">
+    <div class="logo-title">BUFFALOES</div>
+    <div class="logo-sub">Komamboga Waligo Road</div>
+  </div>
+
+  <div class="divider"></div>
+  <p class="menu-prompt">SELECT YOUR MENU</p>
+
+  <div class="menu-buttons">
+    <div class="menu-btn" onclick="showSection('food')">
+      <div>
+        <div class="btn-label">FOOD</div>
+        <div class="btn-desc">STARTERS · MAINS · SPECIALS · PIZZA</div>
+      </div>
+      <span class="btn-arrow">→</span>
+    </div>
+    <div class="menu-btn" onclick="showSection('drinks')">
+      <div>
+        <div class="btn-label">DRINKS</div>
+        <div class="btn-desc">COFFEE · TEA · MOCKTAILS · JUICES</div>
+      </div>
+      <span class="btn-arrow">→</span>
+    </div>
+    <div class="menu-btn" onclick="showSection('bar')">
+      <div>
+        <div class="btn-label">BAR</div>
+        <div class="btn-desc">SPIRITS · WINE · COCKTAILS · CHAMPAGNE</div>
+      </div>
+      <span class="btn-arrow">→</span>
+    </div>
+  </div>
+
+  <div class="contact-bar">
+    <div class="divider" style="margin-bottom:16px"></div>
+    <p><a href="tel:0759933555">0759 933 555</a> — Komamboga Waligo Road</p>
+  </div>
+</div>
+
+<!-- DYNAMIC MENU VIEW -->
+<div id="section-view">
+  <div class="section-header">
+    <button class="back-btn" onclick="goBack()">← BACK</button>
+    <div class="section-title-bar" id="section-title-bar"></div>
+  </div>
+
+  <!-- BAR: New Search Bar Design -->
+  <div id="bar-controls" style="display:none;">
+    <div class="bar-search-container">
+      <button class="hamburger-btn" onclick="toggleCategorySidebar()">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </button>
+      <div class="search-bar-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="bar-search" placeholder="Search products, brands and categories" oninput="filterBar()">
+        <button class="search-btn" onclick="filterBar()">Search</button>
+      </div>
+    </div>
+
+    <div class="category-sidebar" id="category-sidebar">
+      <div class="sidebar-header">CATEGORIES</div>
+      <div class="sidebar-cat-list">
+        <button class="cat-pill active" onclick="filterCat(this,'all')">ALL</button>
+        <button class="cat-pill" onclick="filterCat(this,'rum')">RUM</button>
+        <button class="cat-pill" onclick="filterCat(this,'vodka')">VODKA</button>
+        <button class="cat-pill" onclick="filterCat(this,'gin')">GIN</button>
+        <button class="cat-pill" onclick="filterCat(this,'tequila')">TEQUILA</button>
+        <button class="cat-pill" onclick="filterCat(this,'cognac')">COGNAC</button>
+        <button class="cat-pill" onclick="filterCat(this,'whiskey')">WHISKEY</button>
+        <button class="cat-pill" onclick="filterCat(this,'malt')">SINGLE MALT</button>
+        <button class="cat-pill" onclick="filterCat(this,'liqueur')">LIQUEUR</button>
+        <button class="cat-pill" onclick="filterCat(this,'wine')">WINE</button>
+        <button class="cat-pill" onclick="filterCat(this,'champagne')">CHAMPAGNE</button>
+        <button class="cat-pill" onclick="filterCat(this,'cocktails')">COCKTAILS</button>
+        <button class="cat-pill" onclick="filterCat(this,'shooters')">SHOOTERS</button>
+        <button class="cat-pill" onclick="filterCat(this,'cold')">COLD DRINKS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 1/3 IMAGES LEFT, 2/3 TEXT RIGHT SECTIONS      -->
+  <!-- ============================================ -->
+
+  <!-- FOOD MENU -->
+  <div id="menu-food" class="section-content" style="display:none;">
+    <div class="split-layout">
+      <!-- LEFT 1/3: ALL IMAGES STACKED WITH GAPS -->
+      <div class="split-left">
+        <img src="Images/Chicken.png" alt="Hero Food" loading="lazy">
+        <img src="Images/Snacks.png" alt="Snacks" loading="lazy">
+        <img src="Images/porkChops.png" alt="Pork Chops" loading="lazy">
+        <img src="Images/fish.png" alt="Fish" loading="lazy">
+        <img src="Images/Dessert.png" alt="Dessert" loading="lazy">
+        
+      </div>
+      
+      <!-- RIGHT 2/3: PURE TEXT MENU (NO IMAGES) -->
+      <div class="split-right">
+        <div class="category">
+          <div class="category-title">STARTERS / SNACKS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Clear Vegetable Soup</div><div class="item-desc">Served with garlic bread or vegetable rice</div></div><div class="item-price">15K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Clear Soup</div><div class="item-desc">Served with garlic bread or vegetable rice</div></div><div class="item-price">18K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Snack Slate</div><div class="item-desc">Trio of spring rolls or beef samosa, coleslaw & sweet chili sauce</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chocolate Cake</div><div class="item-desc">Slice of chocolate cake with vanilla ice cream and syrup</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Tenders</div><div class="item-desc">Buttermilk chicken tender, honey mustard dip & crispy fries</div></div><div class="item-price">25K</div></div>
+        </div>
+
+        <div class="category">
+          <div class="category-title">MAIN COURSE</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">BBQ Chicken Wings</div><div class="item-desc">Crunchy wings sautéed in house BBQ sauce, coleslaw & chips</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Roasted Chicken Thighs</div><div class="item-desc">Slow-roasted, creamed spinach & side of your choice</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Half Roasted Chicken</div><div class="item-desc">Lemon & garlic marinade, side of your choice</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Charcoal Roasted Skewers</div><div class="item-desc">Pork, goat, or chicken — coleslaw & chips</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Boiled Chicken</div><div class="item-desc">Quarter chicken in local spices, side of your choice</div></div><div class="item-price">36K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Boiled Goat</div><div class="item-desc">Tender goat with rosemary, potato & carrots, side of your choice</div></div><div class="item-price">36K</div></div>
+        </div>
+
+        <div class="category">
+          <div class="category-title">BUFFALOES SPECIALS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Buffaloes Whole Tilapia Fish</div><div class="item-desc">Deep-fried in lemon soy & cumin marinade, house salad & plantain</div></div><div class="item-price">45K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Buffaloes Spicy Pork Ribs</div><div class="item-desc">Roasted spare ribs, mild or spicy salt & pepper, coleslaw & wedges</div></div><div class="item-price">38K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Buffaloes BBQ Roasted Goat Ribs</div><div class="item-desc">Oven-roasted with rosemary & garlic herbs, BBQ sauce, side of your choice</div></div><div class="item-price">38K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Kikalayi</div><div class="item-desc">Pork, goat, or chicken sautéed with vegetables, potatoes & cabbage in gravy</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">The Curries</div><div class="item-desc">Indian-spiced curry sauce with one side — chicken, beef, or vegetable</div></div><div class="item-price">35K</div></div>
+        </div>
+
+        <div class="category">
+          <div class="category-title">FISH DISHES</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Fried Tilapia</div><div class="item-desc">Whole tilapia deep-fried, served with plantain & salad</div></div><div class="item-price">40K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Grilled Tilapia</div><div class="item-desc">Grilled with herbs, served with rice or fries</div></div><div class="item-price">42K</div></div>
+        </div>
+
+        <div class="category">
+          <div class="category-title">DESSERTS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chocolate Lava Cake</div><div class="item-desc">Warm chocolate cake, vanilla ice cream & syrup</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Ice Cream</div><div class="item-desc">Two scoops of your choice</div></div><div class="item-price">12K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Fruit Salad</div><div class="item-desc">Seasonal fresh fruits</div></div><div class="item-price">15K</div></div>
+        </div>
+
+        <div class="category"><div class="category-title">BURGER / SLIDERS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Sliders</div><div class="item-desc">Grilled chicken fillet, baked slider rolls, lettuce, pickled onions, tomatoes — fries & coleslaw</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Beef Sliders</div><div class="item-desc">Mini grilled beef patties, baked slider rolls, lettuce, pickled onions, tomatoes — fries & coleslaw</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Beef Burger</div><div class="item-desc">Grilled beef patty, pickled onions, lettuce, Thousand Island — chips & coleslaw</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Burger</div><div class="item-desc">Grilled chicken fillet, pickled onions, lettuce, Thousand Island — fries & coleslaw</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="addon-badge">Add-Ons: Bacon 8K · Cheese 5K</div><div class="note">Sides: Plain or Vegetable rice, Fries, Potato Wedges, Boiled Potatoes, Mashed Potatoes, Salads, Plantain</div></div></div>
+        </div>
+
+        <div class="category"><div class="category-title">PIZZA</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Beef Steak Pizza</div><div class="item-desc">Sauce, cheese, steak fillet & vegetables</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Pizza</div><div class="item-desc">Sauce, cheese, chicken fillet & vegetables</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Mexicana Pizza</div><div class="item-desc">Sauce, cheese, vegetables, onions & bell peppers</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Hawaiian Pizza</div><div class="item-desc">Sauce, cheese, pineapple slices, beef & vegetables</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Mixed Protein Pizza</div><div class="item-desc">Sauce, cheese, beef fillet, chicken fillet & vegetables</div></div><div class="item-price">38K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="note">Extras (5K): Mozzarella Cheese · Chicken · Beef · Veggies · Pineapple</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRINKS MENU -->
+  <div id="menu-drinks" class="section-content" style="display:none;">
+    <div class="split-layout">
+      <!-- LEFT 1/3: ALL IMAGES STACKED WITH GAPS -->
+      <div class="split-left">
+        <img src="Images/coffee.png" alt="Hero Coffee" loading="lazy">
+        <img src="Images/tea.png" alt="Tea" loading="lazy">
+        <img src="Images/virginMojito.png" alt="Virgin Mojito" loading="lazy">
+      </div>
+      
+      <!-- RIGHT 2/3: PURE TEXT MENU (NO IMAGES) -->
+      <div class="split-right">
+        <div class="category">
+          <div class="category-title">COFFEES</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Espresso</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Single Cappuccino</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Double Cappuccino</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Americano</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Mocha Latte</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">African Coffee</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Black Coffee</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Hot Chocolate</div></div><div class="item-price">10K</div></div>
+        </div>
+
+        <div class="category">
+          <div class="category-title">TEAS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Black Tea</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">African Tea</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Dawa Tea</div></div><div class="item-price">12K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Herbal Tea</div></div><div class="item-price">10K</div></div>
+        </div>
+
+        <div class="category"><div class="category-title">ICED BEVERAGES</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Iced Coffee Black</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Iced Coffee White</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Iced Tea</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Milkshakes</div></div><div class="item-price">18K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Smoothie</div></div><div class="item-price">18K</div></div>
+        </div>
+
+        <div class="category"><div class="category-title">SOFT DRINKS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Sodas</div></div><div class="item-price">3K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Water</div></div><div class="item-price">3K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Red Bull</div></div><div class="item-price">12K</div></div>
+        </div>
+
+        <div class="category"><div class="category-title">HEALTHY JUICE</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Weight Loss</div><div class="item-desc">Spinach, Carrots, Beetroot, Watermelon</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Heart Beat</div><div class="item-desc">Watermelon, Cucumber, Mint, Lime Juice</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Booster</div><div class="item-desc">Carrots, Orange, Cucumber, Mint</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Gut Health</div><div class="item-desc">Cucumber, Pineapple, Spinach, Nuts</div></div><div class="item-price">20K</div></div>
+        </div>
+
+        <div class="category"><div class="category-title">FRESH JUICE</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Mango · Pineapple · Passion · Melon</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Orange Juice</div></div><div class="item-price">12K</div></div>
+        </div>
+
+        <div class="category">
+          <div class="category-title">MOCKTAILS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Berry Bliss</div><div class="item-desc">Grapes, Strawberry, Blueberry, Cranberry</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Virgin Mojito</div><div class="item-desc">Lime, Mint Leaves, Sour Mix, Club Soda</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Gimlet</div><div class="item-desc">Pineapple, Fresh Mint, Mint Syrup</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Buffaloes Punch</div><div class="item-desc">Strawberry, Mangoes, Pineapple, Melon, Peach Puree</div></div><div class="item-price">20K</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAR MENU -->
+  <div id="menu-bar" class="section-content" style="display:none;">
+    <div class="split-layout">
+      <!-- LEFT 1/3: ALL IMAGES STACKED WITH NEW ONES ADDED -->
+      <div class="split-left">
+        <img src = "Images/Malfys.png" alt="Gin" loading="lazy">
+        <img src = "Images/donJulio.png" alt="Tequila" loading="lazy">
+        <img src = "Images/HennessyVsop.png" alt="Cognac" loading="lazy">
+        <img src = "Images/blackBarrel.png" alt="Whiskey" loading="lazy">
+        <img src = "Images/macallan.png" alt="Single Malt" loading="lazy">
+        <img src = "Images/reposado.png" alt="Reposado" loading="lazy">
+        <img src = "Images/malibu.png" alt="Malibu" loading="lazy">
+        <img src = "Images/jagermeister.png" alt="Jagermeister" loading="lazy">
+        <img src = "Images/drambuie.png" alt="Drambuie" loading="lazy">
+        <img src = "Images/wineGlass.png" alt="Hero Bar" loading="lazy">
+        <img src = "Images/jack.png" alt="Jack Daniels" loading="lazy">
+        <img src = "Images/Moet.png" alt="Moet" loading="lazy">
+        <img src = "Images/glenffiddich.png" alt="Glenfiddich" loading="lazy">    
+        <img src = "Images/Cocktails.png" alt="Cocktails" loading="lazy">
+        <img src = "Images/pitchers.png" alt="Pitchers" loading="lazy">
+      
+      </div>
+      
+      <!-- RIGHT 2/3: PURE TEXT MENU (NO IMAGES) -->
+      <div class="split-right">
+        <!-- RUM -->
+        <div class="category" data-cat="rum">
+          <div class="category-title">RUM <span class="cat-sub">Single · Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Captain Morgan Spiced</div></div><div class="price-double"><div class="price-row"><span>7K</span><span>150K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Malibu</div></div><div class="price-double"><div class="price-row"><span>7K</span><span>150K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Bacardi</div></div><div class="price-double"><div class="price-row"><span>7K</span><span>160K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Havana White</div></div><div class="price-double"><div class="price-row"><span>6K</span><span>130K</span></div></div></div>
+        </div>
+
+        <!-- VODKA -->
+        <div class="category" data-cat="vodka">
+          <div class="category-title">VODKA <span class="cat-sub">Single · Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Absolute Vodka</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>190K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Circo Original</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>400K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Circo Pineapple</div></div><div class="price-double"><div class="price-row"><span>—</span><span>350K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Stolichnaya</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Grey Goose</div></div><div class="price-double"><div class="price-row"><span>—</span><span>350K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Smirnoff Vodka</div></div><div class="price-double"><div class="price-row"><span>5K</span><span>100K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Sky Infused Passion</div></div><div class="price-double"><div class="price-row"><span>5K</span><span>100K</span></div></div></div>
+        </div>
+
+        <!-- GIN -->
+        <div class="category" data-cat="gin">
+          <div class="category-title">GIN <span class="cat-sub">Single · Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Beefeater Pink</div></div><div class="price-double"><div class="price-row"><span>7K</span><span>150K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Beefeater Original</div></div><div class="price-double"><div class="price-row"><span>7K</span><span>150K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Gordon's Pink</div></div><div class="price-double"><div class="price-row"><span>7K</span><span>150K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Bombay Sapphire</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Tanqueray Sevilla</div></div><div class="price-double"><div class="price-row"><span>9K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Tanqueray Gin</div></div><div class="price-double"><div class="price-row"><span>9K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Tanqueray Ten</div></div><div class="price-double"><div class="price-row"><span>—</span><span>350K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Uganda Waragi</div></div><div class="price-double"><div class="price-row"><span>5K</span><span>90K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Gilbeys</div></div><div class="price-double"><div class="price-row"><span>5K</span><span>100K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Malfys Gin</div></div><div class="price-double"><div class="price-row"><span>9K</span><span>250K</span></div></div></div>
+        </div>
+
+        <!-- TEQUILA -->
+        <div class="category" data-cat="tequila">
+          <div class="category-title">TEQUILA <span class="cat-sub">Single · Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Don Julio Anejo</div></div><div class="price-double"><div class="price-row"><span>—</span><span>550K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Don Julio Blanco</div></div><div class="price-double"><div class="price-row"><span>—</span><span>550K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Olmeca Silver</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>250K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Olmeca Gold</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>250K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Olmeca Chocolate</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jose Cuervo</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Azul</div></div><div class="price-double"><div class="price-row"><span>—</span><span>2.2M</span></div></div></div>
+        </div>
+
+        <!-- COGNAC -->
+        <div class="category" data-cat="cognac">
+          <div class="category-title">COGNAC <span class="cat-sub">Single · Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Hennessy VS</div></div><div class="price-double"><div class="price-row"><span>15K</span><span>520K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Hennessy VSOP</div></div><div class="price-double"><div class="price-row"><span>—</span><span>650K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Martell VSOP</div></div><div class="price-double"><div class="price-row"><span>15K</span><span>600K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Courvoisier VS</div></div><div class="price-double"><div class="price-row"><span>12K</span><span>400K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Remy Martin VSOP</div></div><div class="price-double"><div class="price-row"><span>—</span><span>600K</span></div></div></div>
+        </div>
+
+        <!-- BLENDED WHISKEY -->
+        <div class="category" data-cat="whiskey">
+          <div class="category-title">BLENDED WHISKEY <span class="cat-sub">Single · Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chivas 12yrs</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>320K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Chivas 18yrs</div></div><div class="price-double"><div class="price-row"><span>—</span><span>600K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jameson Irish</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jameson Black Barrel</div></div><div class="price-double"><div class="price-row"><span>—</span><span>300K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JW Red Label</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>160K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JW Black Label</div></div><div class="price-double"><div class="price-row"><span>9K</span><span>280K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JW Double Black</div></div><div class="price-double"><div class="price-row"><span>11K</span><span>350K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JW Gold Reserve</div></div><div class="price-double"><div class="price-row"><span>20K</span><span>450K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JW 18yrs</div></div><div class="price-double"><div class="price-row"><span>—</span><span>800K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JW Blue Label</div></div><div class="price-double"><div class="price-row"><span>—</span><span>1.5M</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Black & White</div></div><div class="price-double"><div class="price-row"><span>6K</span><span>120K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jack Daniels No 7</div></div><div class="price-double"><div class="price-row"><span>9K</span><span>280K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jack Daniels Fire</div></div><div class="price-double"><div class="price-row"><span>9K</span><span>280K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jim Beam</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>220K</span></div></div></div>
+        </div>
+
+        <!-- SINGLE MALT -->
+        <div class="category" data-cat="malt">
+          <div class="category-title">SINGLE MALT WHISKY <span class="cat-sub">Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Glenlivet Founders Reserve</div></div><div class="item-price">460K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Glenlivet 12yrs</div></div><div class="item-price">550K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Glenlivet 15yrs</div></div><div class="item-price">700K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Macallan 12yrs</div></div><div class="item-price">580K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Macallan 15yrs</div></div><div class="item-price">900K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Aberlour 12yrs</div></div><div class="item-price">500K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Glenfiddich 12yrs</div></div><div class="item-price">440K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Glenfiddich 15yrs</div></div><div class="item-price">650K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Glenmorangie Original</div></div><div class="item-price">520K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Singleton 12yrs</div></div><div class="item-price">320K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Singleton 15yrs</div></div><div class="item-price">400K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Singleton 18yrs</div></div><div class="item-price">700K</div></div>
+          <div class="note">Bottle prices only</div>
+        </div>
+
+        <!-- LIQUEUR -->
+        <div class="category" data-cat="liqueur">
+          <div class="category-title">LIQUEUR <span class="cat-sub">Single · Bottle</span></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Amarula</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>200K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Baileys</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Cointreau</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>300K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Disaronno Amaretto</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>320K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Apple Sour</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>180K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jagermeister</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>300K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Kahlua</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>220K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Drambuie</div></div><div class="price-double"><div class="price-row"><span>10K</span><span>350K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Campari</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>200K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Aperol</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>180K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Martini Banco</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>200K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Martini Rosso</div></div><div class="price-double"><div class="price-row"><span>8K</span><span>200K</span></div></div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Zappa</div></div><div class="price-double"><div class="price-row"><span>6K</span><span>140K</span></div></div></div>
+        </div>
+
+        <!-- WINE -->
+        <div class="category" data-cat="wine">
+          <div class="category-title">WINE LIST</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">House Wine Red / White (Glass)</div></div><div class="item-price">15K</div></div>
+          <div class="subnote">▸ FRANCE</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">BnG Reserve Sav Blanc</div></div><div class="item-price">150K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Calvet Chardonnay</div></div><div class="item-price">100K</div></div>
+          <div class="subnote">▸ ITALIAN</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Zonin Moscato</div></div><div class="item-price">140K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Zonin Pinot Grigio</div></div><div class="item-price">120K</div></div>
+          <div class="subnote">▸ SOUTH AFRICA</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Nederburg Chardonnay</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">KWV Chardonnay</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Spire Signature Sav Blanc</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Four Cousins White 1.5L</div></div><div class="item-price">150K</div></div>
+          <div class="subnote">▸ RED WINE (SA)</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Nederburg Cab Sau</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Nederburg Pinotage</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">KWV Classic Shiraz</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Four Cousins Red 1.5L</div></div><div class="item-price">150K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Four Cousins Red 750ML</div></div><div class="item-price">90K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">KWV Classic Rosé</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Nederburg Rosé</div></div><div class="item-price">100K</div></div>
+          <div class="subnote">▸ SPARKLING WINE</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JP Chanet Rosé</div></div><div class="item-price">120K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">JP Chanet Blanc</div></div><div class="item-price">120K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Baron Sparkling Brut</div></div><div class="item-price">120K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Zonin Prosecco</div></div><div class="item-price">200K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Fragolino Red, White & Rosé</div></div><div class="item-price">120K</div></div>
+        </div>
+
+        <!-- CHAMPAGNE -->
+        <div class="category" data-cat="champagne">
+          <div class="category-title">CHAMPAGNE (Bottle)</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Moet & Chandon Imperial Brut</div></div><div class="item-price">550K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Moet & Chandon Imperial Nectar</div></div><div class="item-price">600K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Veuve Cliquot Brut</div></div><div class="item-price">640K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Veuve Cliquot Rich Brut</div></div><div class="item-price">680K</div></div>
+        </div>
+
+        <!-- SHOOTERS -->
+        <div class="category" data-cat="shooters">
+          <div class="category-title">SHOOTERS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">B52</div></div><div class="item-price">10K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jagerbomb</div></div><div class="item-price">12K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Blow Job</div></div><div class="item-price">10K</div></div>
+        </div>
+
+        <!-- CLASSIC COCKTAILS -->
+        <div class="category" data-cat="cocktails">
+          <div class="category-title">CLASSIC COCKTAILS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Classic Mojito</div><div class="item-desc">Rum, Lime, Mint, Soda</div></div><div class="item-price">20K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Long Island</div><div class="item-desc">Rum, Gin, Vodka, Tequila, Triple Sec, Lime, Coke</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Cosmopolitan</div><div class="item-desc">Vodka, Orange Liqueur, Lime, Cranberry</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Classic Martini</div><div class="item-desc">Gin, Martini Extra Dry, Olive</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Mai Tai</div><div class="item-desc">Rum, Amaretto, Pineapple, Grenadine</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Whiskey Sour</div><div class="item-desc">Jim Beam, Bitters, Sour Mix</div></div><div class="item-price">28K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Old Fashioned</div><div class="item-desc">Jim Beam, Bitters, Orange Zest</div></div><div class="item-price">30K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Daiquiri Frozen</div><div class="item-desc">Rum, Strawberry, Lime</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Espresso Martini</div><div class="item-desc">Vodka, Espresso, Kahlua</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Negroni</div><div class="item-desc">Gin, Campari, Sweet Vermouth</div></div><div class="item-price">25K</div></div>
+        </div>
+
+        <!-- SIGNATURE COCKTAILS -->
+        <div class="category" data-cat="cocktails">
+          <div class="category-title">SIGNATURE COCKTAILS</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Hot Summer</div><div class="item-desc">Captain Morgan, Passion Juice, Sour Mix</div></div><div class="item-price">28K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Safari Sunset</div><div class="item-desc">Absolute Vanilla, Passion Juice</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Apricot Fix</div><div class="item-desc">Jim Beam, Apricot Jam, Orange Juice</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Amazonian Dream</div><div class="item-desc">Beefeater Pink, Rosé Wine, Pineapple</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Tanqueray Gin Punch</div><div class="item-desc">Sevilla, Amaretto, Strawberry Jam</div></div><div class="item-price">28K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Coconut Queen</div><div class="item-desc">Malibu, Drambuie, Guava Juice</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Jungle Fever</div><div class="item-desc">5 Spirits, Blue Curacao, Red Bull</div></div><div class="item-price">35K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Raspberry Punch</div><div class="item-desc">Beefeater, Raspberry Purée, Tonic</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Queen of Katwe</div><div class="item-desc">Smirnoff, Orange Liqueur, Basil</div></div><div class="item-price">25K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Buffalo's Mudslide</div><div class="item-desc">Amarula, Drambuie, Chocolate Cream</div></div><div class="item-price">25K</div></div>
+        </div>
+
+        <!-- SIGNATURE PITCHERS -->
+        <div class="category" data-cat="cocktails">
+          <div class="category-title">SIGNATURE PITCHERS (Sharing)</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Red & White Sangria</div><div class="item-desc">Red/White Wine, Brandy, Fruits</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Big Batch Margarita</div><div class="item-desc">Tequila, Lime, Melon Juice</div></div><div class="item-price">100K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Boss Lady</div><div class="item-desc">Brandy, Peach Liqueur, Rosé</div></div><div class="item-price">100K</div></div>
+        </div>
+
+        <!-- COLD BEVERAGES -->
+        <div class="category" data-cat="cold">
+          <div class="category-title">COLD BEVERAGES</div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Local Beers</div></div><div class="item-price">6K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Apple Cider</div></div><div class="item-price">8K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Guarana Can</div></div><div class="item-price">12K</div></div>
+          <div class="menu-item"><div class="item-info"><div class="item-name">Imported Beers</div></div><div class="item-price">12K</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
