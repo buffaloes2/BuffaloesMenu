@@ -1,4 +1,23 @@
 // ─────────────────────────────────────────────
+// IMAGE FADE-IN OBSERVER
+// ─────────────────────────────────────────────
+const imgObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('img-visible');
+      imgObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+function observeImages() {
+  document.querySelectorAll('.split-left img').forEach(img => {
+    img.classList.remove('img-visible');
+    imgObserver.observe(img);
+  });
+}
+
+// ─────────────────────────────────────────────
 // SHOW / HIDE SECTIONS
 // ─────────────────────────────────────────────
 function showSection(key) {
@@ -28,6 +47,9 @@ function showSection(key) {
   }
 
   window.scrollTo(0, 0);
+
+  // trigger image fade-in for this section
+  observeImages();
 }
 
 function goBack() {
@@ -160,7 +182,6 @@ function populateDropdown() {
 // SELECT DROPDOWN CATEGORY (INSTANT CLOSE)
 // ─────────────────────────────────────────────
 function selectDropdownCategory(cat) {
-  // Find the corresponding pill button and trigger filter
   const pills = document.querySelectorAll('.cat-pill');
   let targetBtn = null;
   pills.forEach(btn => {
@@ -174,11 +195,9 @@ function selectDropdownCategory(cat) {
     filterCat(targetBtn, cat);
   }
   
-  // ✅ FORCE CLOSE THE DROPDOWN INSTANTLY
   const dropdown = document.getElementById('mini-dropdown');
   dropdown.classList.remove('show');
   
-  // Reset the input field
   document.getElementById('bar-search').value = '';
   document.getElementById('bar-search').blur();
 }
@@ -187,14 +206,12 @@ function selectDropdownCategory(cat) {
 // DROPDOWN SHOW / HIDE
 // ─────────────────────────────────────────────
 function showDropdown() {
-  // Only show if we are inside the Bar menu
   if (document.getElementById('bar-controls').style.display !== 'none') {
     document.getElementById('mini-dropdown').classList.add('show');
   }
 }
 
 function hideDropdown() {
-  // We use a small delay to let the user click the dropdown item
   setTimeout(() => {
     document.getElementById('mini-dropdown').classList.remove('show');
   }, 300);
