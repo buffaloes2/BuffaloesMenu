@@ -74,12 +74,11 @@ body {
 }
 .logo-image:hover { transform: scale(1.02); }
 
-/* --- CORRECTED LOGO TEXT STYLES (MATCHES YOUR HTML) --- */
 .logo-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 15vw, 80px);
   letter-spacing: 4px;
-  color: var(--white); /* Changed to white */
+  color: var(--white);
   line-height: 1;
   text-align: center;
 }
@@ -88,30 +87,18 @@ body {
   font-family: 'Barlow', sans-serif;
   font-weight: 300;
   font-style: italic;
-  font-size: clamp(11px, 3vw, 14px); /* Kept small */
-  letter-spacing: 4px;
-  color: var(--white); /* Changed to white */
-  text-transform: uppercase;
-  margin-top: 6px;
-  text-align: center;
-}
-
-.logo-title-sub {
-  font-size: clamp(20px, 6vw, 20px);
-  color: var(--white); /* Changed to white */
-  letter-spacing: 6px;
-}
-
-/* Address text - stays Gold */
-.logo-address {
-  font-family: 'Barlow', sans-serif;
-  font-weight: 300;
-  font-size: clamp(11px, 3vw, 14px);
+  font-size: clamp(11px,3vw, 14px);
   letter-spacing: 4px;
   color: var(--gold);
   text-transform: uppercase;
   margin-top: 6px;
   text-align: center;
+}
+
+.logo-title-sub{
+  font-size: clamp(20px, 6vw, 20px);
+  color: var(--gold);
+  letter-spacing: 6px;
 }
 
 .divider {
@@ -776,13 +763,5 @@ body {
 
   .logo-image {
     width: 80px;
-  }
-
-  /* Mobile logo adjustments - Kept your existing sizes */
-  .logo-title {
-    font-size: clamp(42px, 12vw, 52px);
-  }
-  .logo-title-sub {
-    font-size: clamp(20px, 6vw, 20px);
   }
 }
