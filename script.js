@@ -42,13 +42,18 @@ function showSection(key) {
     document.querySelectorAll('#menu-bar .category').forEach(el => el.style.display = '');
     document.querySelectorAll('#menu-bar .menu-item').forEach(el => el.style.display = '');
     document.getElementById('category-sidebar').classList.remove('open');
+
+    // Always restore images and layout on (re)entry
+    const splitLeft = document.querySelector('#menu-bar .split-left');
+    if (splitLeft) splitLeft.style.display = '';
+    const barLayout = document.querySelector('#menu-bar .split-layout');
+    if (barLayout) barLayout.classList.remove('no-images');
+
   } else {
     barControls.style.display = 'none';
   }
 
   window.scrollTo(0, 0);
-
-  // trigger image fade-in for this section
   observeImages();
 }
 
@@ -71,10 +76,10 @@ function filterCat(btn, cat) {
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // Force clear the search input
+  // Clear search input
   document.getElementById('bar-search').value = '';
 
-  // Reset ALL items and categories to visible first
+  // Reset all categories and items to visible
   document.querySelectorAll('#menu-bar .menu-item').forEach(item => {
     item.style.display = '';
   });
@@ -82,14 +87,24 @@ function filterCat(btn, cat) {
     el.style.display = '';
   });
 
-  // Now apply the category filter
+  const splitLeft = document.querySelector('#menu-bar .split-left');
+  const barLayout = document.querySelector('#menu-bar .split-layout');
+
   if (cat !== 'all') {
+    // Hide categories that don't match
     document.querySelectorAll('#menu-bar .category').forEach(el => {
       el.style.display = (el.dataset.cat === cat) ? '' : 'none';
     });
+    // Hide all images so the menu takes full width
+    splitLeft.style.display = 'none';
+    barLayout.classList.add('no-images');
+  } else {
+    // Restore images and default layout
+    splitLeft.style.display = '';
+    barLayout.classList.remove('no-images');
   }
 
-  // closes the category side bar
+  // Close the category sidebar
   document.getElementById('category-sidebar').classList.remove('open');
 
   showNoResults();
@@ -103,6 +118,12 @@ function filterBar() {
 
   document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
   document.querySelector('.cat-pill').classList.add('active');
+
+  // Always restore images when searching (resets to ALL state)
+  const splitLeft = document.querySelector('#menu-bar .split-left');
+  const barLayout = document.querySelector('#menu-bar .split-layout');
+  if (splitLeft) splitLeft.style.display = '';
+  if (barLayout) barLayout.classList.remove('no-images');
 
   const categories = document.querySelectorAll('#menu-bar .category');
   categories.forEach(cat => {
