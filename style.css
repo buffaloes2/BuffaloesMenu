@@ -52,6 +52,7 @@ body {
   justify-content: center;
   padding: 40px 24px;
   background: #0D2E2A;
+  padding-top: 40px;
 }
 
 .logo-wrap {
@@ -100,20 +101,8 @@ body {
   margin-top: -8px; /* Pulls it closer to the top */
 }
 
-.logo-address {
-  font-family: 'Barlow', sans-serif;
-  font-weight: 300;
-  font-size: clamp(11px, 3vw, 14px);
-  letter-spacing: 4px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-top: 12px;
-  text-align: center;
-  opacity: 0.8;
-}
-
 .divider {
-  width: 80px;
+  width: 60px;
   height: 2px;
   background: var(--gold);
   margin: 20px auto;
@@ -197,26 +186,6 @@ body {
 
 .menu-btn:hover .btn-arrow { opacity: 1; transform: translateX(6px); }
 
-.contact-bar {
-  margin-top: 60px;
-  text-align: center;
-  animation: fadeUp 0.8s 0.6s ease both;
-}
-
-.contact-bar p {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--cream);
-  opacity: 0.5;
-  text-transform: uppercase;
-}
-
-.contact-bar a {
-  color: var(--gold);
-  text-decoration: none;
-  opacity: 0.8;
-}
-.contact-bar a:hover { opacity: 1; text-decoration: underline; }
 
 /* ========== SECTION VIEW ========== */
 #section-view {
@@ -431,6 +400,7 @@ body {
   padding: 32px 24px 80px;
   align-items: flex-start;
   position: relative;
+  overflow: hidden;
 }
 
 /* LEFT — parallax via JS */
@@ -592,6 +562,39 @@ body {
   letter-spacing: 1px;
 }
 
+/* BAR: CATEGORY FILTER — FULL WIDTH MODE */
+.split-layout.no-images .split-right {
+  flex: 1;
+  max-width: 100%;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: #0D2E2A;
+  border-top: 1px solid rgba(212,168,83,0.3);
+  padding: 32px 24px 24px;
+  margin-top:auto;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-info {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.5;
+  text-align: center;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px);}
   to   { opacity: 1; transform: translateY(0);}
@@ -628,7 +631,7 @@ body {
   .split-left {
     flex: 1;
     min-width: 0;
-    gap: 60px;
+    gap: 80px;
   }
 
   .split-left img {
