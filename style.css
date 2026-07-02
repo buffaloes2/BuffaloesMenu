@@ -718,7 +718,7 @@ footer {
 }
 
 .footer-info {
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--cream);
@@ -726,17 +726,6 @@ footer {
   text-align: center;
 }
 
-.footer-bottom {
-  border-top: 1px solid rgba(212,168,83,0.1);
-  padding-top: 14px;
-  width: 100%;
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--cream);
-  opacity: 0.25;
-}
 /* ========== SOCIAL MEDIA LINKS ========== */
 
 .socials {
