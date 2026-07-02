@@ -4,45 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Buffaloes — Restaurant & Bar Menu</title>
-<link rel="stylesheet" href="style.css">
+<link href="style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <section id="intro-page" style="display: flex;">
+    <div class="intro-wrap">
+      <div class="logo-wrap" style="margin-bottom: 25px;">
+        <img src="buffaloes-logo.jpeg" alt="Logo" class="logo-image">
+        <div class="logo-title">
+          <div class="logo-main">BUFFALOES</div>
+          <div class="logo-subtitle">LOUNGE & FITNESS CENTER</div>
+        </div>
+        <div class="divider"></div>
+      </div>
+
+        <h3 class="intro-tagline">
+          Good Food, Good Drinks, Good Vibes.
+        </h3>
+        <p class="intro-para">
+          Explore our menu and discover the perfect pairing for your taste.
+        </p>
+        <div class="intro-buttons">
+          <button class="enter-btn" onclick="enterMenu()">View Menu</button>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1tlexy_GrPQm3AfhpE-KB0b3OSIrBeHGT4L2R_W7G2ZxoXQ/viewform?usp=header" class="feedback-link" target="_blank">Provide Feedback</a>
+        </div>
+        
+      </div>
+  </section>
+
 <!-- LANDING PAGE -->
-<div id="landing">
-  <div class="logo-wrap">
-    <img src="buffaloes-logo.jpeg" alt="Logo" class="logo-image">
-    
-    <div class="logo-title">
-      <div class="logo-main">BUFFALOES</div>
-      <div class="logo-subtitle">LOUNGE MENU</div>
-    </div>
-    <div class="divider"></div>
+<div id="landing" style="display:none;">
+
+  <div class="section-header">
+    <button class="back-btn" onclick="goHome()">Back</button>
+    <div class="section-title-bar">BUFFALOES MENU</div>
   </div>
-  
-  <p class="menu-prompt">SELECT YOUR MENU</p>
+
+  <h2 class="menu-prompt">SELECT YOUR MENU</h2>
 
   <div class="menu-buttons">
-    <div class="menu-btn" onclick="showSection('food')">
-      <div>
+    <div class ='menu-btn' onclick="showSection('food')">
+      <div class="btn-img">
+        <img src="pizza.png" alt="Food">
+      </div>
+      <div class="btn-body">
         <div class="btn-label">FOOD</div>
         <div class="btn-desc">STARTERS · MAINS · SPECIALS · PIZZA</div>
       </div>
     </div>
-    <div class="menu-btn" onclick="showSection('drinks')">
-      <div>
+
+    <div class ='menu-btn' onclick="showSection('drinks')">
+      <div class="btn-img">
+        <img src="coffee.png" alt="Drinks">
+      </div>
+      <div class="btn-body">
         <div class="btn-label">DRINKS</div>
         <div class="btn-desc">COFFEE · TEA · MOCKTAILS · JUICES</div>
       </div>
     </div>
-    <div class="menu-btn" onclick="showSection('bar')">
-      <div>
+
+    <div class ='menu-btn' onclick="showSection('bar')">
+      <div class="btn-img">
+        <img src="pitchers.png" alt="Bar">
+      </div>
+      <div class="btn-body">
         <div class="btn-label">BAR</div>
-        <div class="btn-desc">SPIRITS · WINE · COCKTAILS · CHAMPAGNE</div>
+        <div class="btn-desc">SPIRITS . WINE . COCKTAILS . CHAMPAGNE . PITCHERS</div>
       </div>
     </div>
+  
   </div>
+
 </div>
 
 <!-- DYNAMIC MENU VIEW -->
