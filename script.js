@@ -20,6 +20,19 @@ function observeImages() {
 // ─────────────────────────────────────────────
 // SHOW / HIDE SECTIONS
 // ─────────────────────────────────────────────
+function enterMenu(){
+  document.getElementById('intro-page').style.display = 'none';
+  document.getElementById('landing').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  document.getElementById('intro-page').style.display = 'flex';
+  document.getElementById('landing').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+
 function showSection(key) {
   document.getElementById('landing').style.display = 'none';
   const view = document.getElementById('section-view');
@@ -175,20 +188,20 @@ function showNoResults() {
 function populateDropdown() {
   const dropdown = document.getElementById('mini-dropdown');
   const categories = [
-    { cat: 'all', label: 'All', icon: '🍸' },
-    { cat: 'rum', label: 'Rum', icon: '🥃' },
-    { cat: 'vodka', label: 'Vodka', icon: '🍸' },
-    { cat: 'gin', label: 'Gin', icon: '🍹' },
-    { cat: 'tequila', label: 'Tequila', icon: '🥂' },
-    { cat: 'cognac', label: 'Cognac', icon: '🥃' },
-    { cat: 'whiskey', label: 'Whiskey', icon: '🥃' },
-    { cat: 'malt', label: 'Single Malt', icon: '🥃' },
-    { cat: 'liqueur', label: 'Liqueur', icon: '🍷' },
-    { cat: 'wine', label: 'Wine', icon: '🍷' },
-    { cat: 'champagne', label: 'Champagne', icon: '🍾' },
-    { cat: 'cocktails', label: 'Cocktails', icon: '🍹' },
-    { cat: 'shooters', label: 'Shooters', icon: '🥃' },
-    { cat: 'cold', label: 'Cold Drinks', icon: '🍺' },
+    { cat: 'all', label: 'All' },
+    { cat: 'rum', label: 'Rum' },
+    { cat: 'vodka', label: 'Vodka' },
+    { cat: 'gin', label: 'Gin' },
+    { cat: 'tequila', label: 'Tequila' },
+    { cat: 'cognac', label: 'Cognac' },
+    { cat: 'whiskey', label: 'Whiskey' },
+    { cat: 'malt', label: 'Single Malt' },
+    { cat: 'liqueur', label: 'Liqueur' },
+    { cat: 'wine', label: 'Wine' },
+    { cat: 'champagne', label: 'Champagne' },
+    { cat: 'cocktails', label: 'Cocktails' },
+    { cat: 'shooters', label: 'Shooters' },
+    { cat: 'cold', label: 'Cold Drinks'},
   ];
 
   dropdown.innerHTML = categories.map(c => `
