@@ -737,6 +737,35 @@ footer {
   color: var(--cream);
   opacity: 0.25;
 }
+/* ========== SOCIAL MEDIA LINKS ========== */
+
+.socials {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin-top: 70px;
+  align-items: center;
+  gap: 8px;
+}
+.socials p {
+  font-size: 25px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.socials a img {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  color: var(--gold);
+}
+.socials a img:hover {
+  transform: scale(1.1);
+}
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px);}
